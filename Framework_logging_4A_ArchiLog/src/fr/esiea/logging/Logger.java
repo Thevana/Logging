@@ -11,18 +11,13 @@ import java.util.ArrayList;
  */
 public class Logger {
 	
-	private Class<?> loggerID;
+	private Class<?> loggerName;
 	private Level level = null;
 	private Formatter formatter = null;
 	private ArrayList<Handler> handlers;
 	
-	public Logger(){
-		loggerID = null;
-		handlers = new ArrayList<Handler>();
-	}
-	
-	public Logger(Class<?> loggerID) {
-		this.loggerID = loggerID;
+	public Logger(Class<?> loggerName) {
+		this.loggerName = loggerName;
 		handlers = new ArrayList<Handler>();
 	}
 
@@ -60,7 +55,7 @@ public class Logger {
 		if(handlers.size() == 0)
 			handlers.add(new StreamHandler());
 		
-		msg = formatter.formatMsg(loggerID, currentLevel, msg);
+		msg = formatter.formatMsg(loggerName, currentLevel, msg);
 		dispatchToHandlers(currentLevel, msg);
 	}
 	

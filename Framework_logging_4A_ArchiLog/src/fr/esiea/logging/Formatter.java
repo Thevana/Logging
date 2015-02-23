@@ -12,18 +12,33 @@ import java.util.Date;
  */
 public class Formatter {
 	
-	private SimpleDateFormat dateFormatter;
+	private final SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SS");
+	private String pattern = null;
 	
 	public Formatter(){
-		dateFormatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss.SS");
+		
 	}
 	
 	public Formatter(String pattern){
-		dateFormatter = new SimpleDateFormat(pattern);
+		this.pattern = pattern;
 	}
 	
-	public String formatMsg(Class<?> loggerID, Level currentLevel, String msg) {
-		return dateFormatter.format(new Date()) + " [NAME=" + loggerID.getName()  + " LEVEL=" + currentLevel.name() + " MESSAGE= " + msg + "]";
+	public String formatMsg(Class<?> loggerName, Level currentLevel, String msg) {
+		if(pattern == null) {
+			return "DATE=" + dateFormatter.format(new Date())
+					+ " - [LOGGER_NAME=" + loggerName.getName() 
+					+ " LEVEL_NUM=" + Integer.toString(currentLevel.getLevelValue())
+					+ " LEVEL_NAME=" + currentLevel.name() 
+					+ " MESSAGE= " + msg + "]";
+		}
+		
+		String formattedMsg = "";
+		formattedMsg = pattern.replaceAll("\\%\\(acstime\\)\\%", dateFormatter.format(new Date()));
+		formattedMsg = formattedMsg.replaceAll("\\%\\(loggerName\\)\\%", loggerName.getName());
+		formattedMsg = formattedMsg.replaceAll("\\%\\(levelNum\\)\\%", Integer.toString(currentLevel.getLevelValue()));
+		formattedMsg = formattedMsg.replaceAll("\\%\\(levelName\\)\\%", currentLevel.name());
+		formattedMsg = formattedMsg.replaceAll("\\%\\(message\\)\\%", msg);
+		return formattedMsg;
 	}
 	
 }

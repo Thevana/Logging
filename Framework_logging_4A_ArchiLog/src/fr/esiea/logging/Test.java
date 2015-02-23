@@ -15,7 +15,6 @@ public class Test {
 	public static void main(String[] args) {
 		
 		/* Test Logger */
-		//Logger logger = new Logger();
 		Logger logger = new Logger(Test.class);
 		
 		/* Test Level */
@@ -24,8 +23,13 @@ public class Test {
 		//logger.setLevel(Level.ERROR);
 		
 		/* Test Formatter */
-		logger.setFormatter(new Formatter());
-		//logger.setFormatter(new Formatter("dd-MM-yy hh:mm:ss"));
+		//logger.setFormatter(new Formatter());
+		logger.setFormatter(new Formatter("DATE=%(acstime)% - [LOGGER_NAME=%(loggerName)% LEVEL_NUM=%(levelNum)% LEVEL_NAME=%(levelName)% MESSAGE= %(message)%]"));
+		//logger.setFormatter(new Formatter("[LOGGER_NAME=%(loggerName)% LEVEL_NUM=%(levelNum)% LEVEL_NAME=%(levelName)% MESSAGE= %(message)%]"));
+		//logger.setFormatter(new Formatter("DATE=%(acstime)% - [LEVEL_NUM=%(levelNum)% LEVEL_NAME=%(levelName)% MESSAGE= %(message)%]"));
+		//logger.setFormatter(new Formatter("DATE=%(acstime)% - [LOGGER_NAME=%(loggerName)% LEVEL_NAME=%(levelName)% MESSAGE= %(message)%]"));
+		//logger.setFormatter(new Formatter("DATE=%(acstime)% - [LOGGER_NAME=%(loggerName)% LEVEL_NUM=%(levelNum)% MESSAGE= %(message)%]"));
+		//logger.setFormatter(new Formatter("DATE=%(acstime)% - [LOGGER_NAME=%(loggerName)% LEVEL_NUM=%(levelNum)% LEVEL_NAME=%(levelName)%]"));
 		
 		/* Test Handler */
 		logger.addHandler(new StreamHandler());
