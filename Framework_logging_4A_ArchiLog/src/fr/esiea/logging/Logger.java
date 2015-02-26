@@ -45,6 +45,10 @@ public class Logger {
 		}
 	}
 	
+	public void removeHandler(Handler handler){
+		handlers.remove(handler);
+	}
+	
 	public void debug(String msg) {
 		manageMsg(Level.DEBUG, msg);
 	}
@@ -57,7 +61,7 @@ public class Logger {
 		manageMsg(Level.ERROR, msg);
 	}
 	
-	public void manageMsg(Level messageLevel, String msg){
+	private void manageMsg(Level messageLevel, String msg){
 		if(level == null) {
 			System.out.println("\nLe niveau du logger 'level' n\'est pas renseigné !\n'level' fixé automatiquement à 'level.DEBUG'.\n");
 			level = Level.DEBUG;

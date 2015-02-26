@@ -3,7 +3,7 @@
   associations="true" dependencies="false" nesting-relationships="true">  
   <class id="1" language="java" name="fr.esiea.logging.StreamHandler" project="Framework_logging_4A_ArchiLog" 
     file="/Framework_logging_4A_ArchiLog/src/fr/esiea/logging/StreamHandler.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="125" x="-7" y="569"/>    
+    <position height="99" width="125" x="315" y="526"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -12,7 +12,7 @@
   </class>  
   <enumeration id="2" language="java" name="fr.esiea.logging.Level" project="Framework_logging_4A_ArchiLog" 
     file="/Framework_logging_4A_ArchiLog/src/fr/esiea/logging/Level.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="171" width="119" x="-83" y="358"/>    
+    <position height="171" width="119" x="239" y="315"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
@@ -21,95 +21,86 @@
   </enumeration>  
   <class id="3" language="java" name="fr.esiea.logging.Handler" project="Framework_logging_4A_ArchiLog" 
     file="/Framework_logging_4A_ArchiLog/src/fr/esiea/logging/Handler.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="126" x="76" y="358"/>    
+    <position height="99" width="126" x="398" y="315"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="4" language="java" name="fr.esiea.logging.Test" project="Framework_logging_4A_ArchiLog" 
-    file="/Framework_logging_4A_ArchiLog/src/fr/esiea/logging/Test.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="99" width="113" x="338" y="75"/>    
-    <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
-      visibility="true">      
-      <attributes public="true" package="true" protected="true" private="true" static="true"/>      
-      <operations public="true" package="true" protected="true" private="true" static="true"/>    
-    </display>  
-  </class>  
-  <class id="5" language="java" name="fr.esiea.logging.Logger" project="Framework_logging_4A_ArchiLog" 
+  <class id="4" language="java" name="fr.esiea.logging.Logger" project="Framework_logging_4A_ArchiLog" 
     file="/Framework_logging_4A_ArchiLog/src/fr/esiea/logging/Logger.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="243" width="209" x="76" y="75"/>    
+    <position height="297" width="209" x="398" y="-22"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="6" language="java" name="fr.esiea.logging.Formatter" project="Framework_logging_4A_ArchiLog" 
+  <class id="5" language="java" name="fr.esiea.logging.Formatter" project="Framework_logging_4A_ArchiLog" 
     file="/Framework_logging_4A_ArchiLog/src/fr/esiea/logging/Formatter.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="153" width="221" x="242" y="358"/>    
+    <position height="153" width="221" x="564" y="315"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="7" language="java" name="fr.esiea.logging.RotatingFileHandler" project="Framework_logging_4A_ArchiLog" 
+  <class id="6" language="java" name="fr.esiea.logging.RotatingFileHandler" project="Framework_logging_4A_ArchiLog" 
     file="/Framework_logging_4A_ArchiLog/src/fr/esiea/logging/RotatingFileHandler.java" binary="false" 
     corner="BOTTOM_RIGHT">    
-    <position height="153" width="168" x="158" y="744"/>    
+    <position height="117" width="168" x="480" y="683"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <class id="8" language="java" name="fr.esiea.logging.FileHandler" project="Framework_logging_4A_ArchiLog" 
+  <class id="7" language="java" name="fr.esiea.logging.FileHandler" project="Framework_logging_4A_ArchiLog" 
     file="/Framework_logging_4A_ArchiLog/src/fr/esiea/logging/FileHandler.java" binary="false" corner="BOTTOM_RIGHT">    
-    <position height="135" width="125" x="158" y="569"/>    
+    <position height="117" width="125" x="480" y="526"/>    
     <display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" accessors="true" 
       visibility="true">      
       <attributes public="true" package="true" protected="true" private="true" static="true"/>      
       <operations public="true" package="true" protected="true" private="true" static="true"/>    
     </display>  
   </class>  
-  <association id="9">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="10" name="handlers"/>      
-      <multiplicity id="11" minimum="0" maximum="2147483647"/>    
+  <association id="8">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="9" name="handlers"/>      
+      <multiplicity id="10" minimum="0" maximum="2147483647"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
-  <generalization id="12">    
-    <end type="SOURCE" refId="8"/>    
-    <end type="TARGET" refId="3"/>  
-  </generalization>  
-  <generalization id="13">    
-    <end type="SOURCE" refId="7"/>    
-    <end type="TARGET" refId="8"/>  
-  </generalization>  
-  <generalization id="14">    
+  <generalization id="11">    
     <end type="SOURCE" refId="1"/>    
     <end type="TARGET" refId="3"/>  
   </generalization>  
-  <association id="15">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="16" name="formatter"/>      
-      <multiplicity id="17" minimum="0" maximum="1"/>    
-    </end>    
-    <end type="TARGET" refId="6" navigable="true"/>    
-    <display labels="true" multiplicity="true"/>  
-  </association>  
-  <association id="18">    
-    <end type="SOURCE" refId="5" navigable="false">      
-      <attribute id="19" name="level"/>      
-      <multiplicity id="20" minimum="0" maximum="1"/>    
+  <generalization id="12">    
+    <end type="SOURCE" refId="6"/>    
+    <end type="TARGET" refId="7"/>  
+  </generalization>  
+  <association id="13">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="14" name="level"/>      
+      <multiplicity id="15" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="2" navigable="true"/>    
     <display labels="true" multiplicity="true"/>  
   </association>  
+  <association id="16">    
+    <end type="SOURCE" refId="4" navigable="false">      
+      <attribute id="17" name="formatter"/>      
+      <multiplicity id="18" minimum="0" maximum="1"/>    
+    </end>    
+    <end type="TARGET" refId="5" navigable="true"/>    
+    <display labels="true" multiplicity="true"/>  
+  </association>  
+  <generalization id="19">    
+    <end type="SOURCE" refId="7"/>    
+    <end type="TARGET" refId="3"/>  
+  </generalization>  
   <classifier-display autosize="true" stereotype="true" package="true" initial-value="false" signature="true" 
     accessors="true" visibility="true">    
     <attributes public="true" package="true" protected="true" private="true" static="true"/>    
