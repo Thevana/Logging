@@ -57,22 +57,28 @@ public class Logger {
 		manageMsg(Level.ERROR, msg);
 	}
 	
-	public void manageMsg(Level currentLevel, String msg){
-		if(level == null)
+	public void manageMsg(Level messageLevel, String msg){
+		if(level == null) {
+			System.out.println("\nLe niveau du logger 'level' n\'est pas renseigné !\n'level' fixé automatiquement à 'level.DEBUG'.\n");
 			level = Level.DEBUG;
+		}
 		
-		if(formatter == null)
+		if(formatter == null) {
+			System.out.println("\nLe formateur du logger 'formatter' n\'est pas renseigné !\n'formatter' fixé automatiquement à un formateur par défaut.\n");
 			formatter = new Formatter();
+		}
 		
-		if(handlers.size() == 0)
+		if(handlers.size() == 0) {
+			System.out.println("\nAucun cible 'handlers' n'est renseigné pour les sorties du logger !\nAjout automatique d'un 'StreamHandler' par défaut.\n");
 			handlers.add(new StreamHandler());
+		}
 		
-		msg = formatter.formatMsg(loggerName, currentLevel, msg);
-		dispatchToHandlers(currentLevel, msg);
+		msg = formatter.formatMsg(loggerName, messageLevel, msg);
+		dispatchToHandlers(messageLevel, msg);
 	}
 	
-	private void dispatchToHandlers(Level currentLevel, String msg) {
-		if(currentLevel.getLevelValue() >= level.getLevelValue()){
+	private void dispatchToHandlers(Level messageLevel, String msg) {
+		if(messageLevel.getLevelValue() >= level.getLevelValue()){
 			for(int i = 0; i < handlers.size(); i++)
 				handlers.get(i).proceed(msg);
 		}
@@ -83,11 +89,12 @@ public class Logger {
 		Properties prop = new Properties();
 		try {
 			input = new FileInputStream(new File("logging.properties"));
-			// charger le fichier properties
+			// chargement du fichier properties
 			prop.load(input);
 			
 			if(prop.getProperty("logger.priority").equals("conf")) {
 				codePriority = false;
+				
 				//set level
 				if(prop.getProperty("logger.level").equals("DEBUG")) {
 					level = Level.DEBUG;
@@ -99,41 +106,50 @@ public class Logger {
 					level = Level.ERROR;
 				}
 				else {
+					System.out.println("\nLe niveau du logger 'level' n\'est pas renseigné !\n'level' fixé automatiquement à 'level.DEBUG'.\n");
 					level = Level.DEBUG;
 				}
 				
 				//set formatter
-				String[] formatterInfos = (prop.getProperty("logger.formatter")).split(" *, *");
-				if(formatterInfos.length == 2){
-					formatter = new Formatter(formatterInfos[1]);
+				if((prop.getProperty("logger.formatter")).contains(",")) {
+					String[] formatterInfos = (prop.getProperty("logger.formatter")).split(" *, *");
+					if(formatterInfos.length == 2 && (formatterInfos[0]).equals("Formatter")) {
+						formatter = new Formatter(formatterInfos[1]);
+					}
+					else {
+						System.out.println("\nLe formateur du logger 'formatter' est mal renseigné !\n'formatter' fixé automatiquement à un formateur par défaut.\n");
+						formatter = new Formatter();
+					}
 				}
-				else{
+				else {
 					formatter = new Formatter();
 				}
 				
-				//set handlers
+				//add handlers
 				for(int i = 1; i <= Integer.parseInt(prop.getProperty("logger.handlers.count")); i++) {
 					String handler = prop.getProperty("logger.handler" + i);
 					if(handler.equals("StreamHandler")){
 						handlers.add(new StreamHandler());
 					}
 					else {
-						String[] handlerInfos = handler.split(" *, *");
-						if(handlerInfos.length == 2){
-							if((handlerInfos[0]).equals("FileHandler")) {
+						if(handler.contains(",")) {
+							String[] handlerInfos = handler.split(" *, *");
+							if(handlerInfos.length == 2 && (handlerInfos[0]).equals("FileHandler")) {
 								handlers.add(new FileHandler(handlerInfos[1]));
 							}
-							else if((handlerInfos[0]).equals("RotatingFileHandler")) {
-								handlers.add(new RotatingFileHandler(handlerInfos[1]));
+							else if(handlerInfos.length == 3 && (handlerInfos[0]).equals("RotatingFileHandler")) {
+								handlers.add(new RotatingFileHandler(handlerInfos[1], Integer.parseInt(handlerInfos[2])));
 							}
 							else {
 								if(handlers.size() == 0) {
+									System.out.println("\nAucun cible 'handlers' n'est renseigné (ou est mal renseigné) pour les sorties du logger !\nAjout automatique d'un 'StreamHandler' par défaut.\n");
 									handlers.add(new StreamHandler());
 								}
 							}
 						}
 						else{
 							if(handlers.size() == 0) {
+								System.out.println("\nAucun cible 'handlers' n'est renseigné (ou est mal renseigné) pour les sorties du logger !\nAjout automatique d'un 'StreamHandler' par défaut.\n");
 								handlers.add(new StreamHandler());
 							}
 						}

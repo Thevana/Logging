@@ -12,30 +12,24 @@ import java.io.IOException;
  */
 public class RotatingFileHandler extends FileHandler {
 	
-	private long fileMaxSize = 512;
+	private long fileMaxSize;
 	
-	public RotatingFileHandler(){
-		super("defaultRotatingFile.log");
-	}
-	
-	public RotatingFileHandler(String logFileAbsolutePath){
-		super(logFileAbsolutePath);
-	}
-	
-	public RotatingFileHandler(String logFileAbsolutePath, int fileMaxSize){
-		super(logFileAbsolutePath);
+	public RotatingFileHandler(String logFileCanonicalPath, int fileMaxSize){
+		super(logFileCanonicalPath);
 		this.fileMaxSize = fileMaxSize;
 	}
 	
 	@Override
 	public void proceed(String msg) {
-		if(logFile.exists()){
+		if(logFile.exists()){//Si le fichier existe
 			String logFileCanonicalPath;
 			if(logFile.length() > fileMaxSize){
+				//A chaque fois que ce fichier dépasse la taille maximale
 				try {
 					logFileCanonicalPath = logFile.getCanonicalPath();
-					if(logFile.delete())
-						logFile = new File(logFileCanonicalPath);
+					if(logFile.delete()) { //On le supprime
+						logFile = new File(logFileCanonicalPath); //Puis on le recrée vide
+					}
 				} catch (IOException e) {
 					e.printStackTrace();
 				}

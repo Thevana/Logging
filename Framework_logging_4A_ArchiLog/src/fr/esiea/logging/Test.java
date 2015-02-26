@@ -33,8 +33,8 @@ public class Test {
 		
 		/* Test Handler */
 		logger.addHandler(new StreamHandler());
-		logger.addHandler(new FileHandler());
-		logger.addHandler(new RotatingFileHandler());
+		logger.addHandler(new FileHandler("C:\\Users\\admin\\Desktop\\LoggingTest\\logFile.log"));
+		logger.addHandler(new RotatingFileHandler("C:\\Users\\admin\\Desktop\\LoggingTest\\logRotatingFile.log", 512));
 		
 		/* Execution des tests */
 		logger.debug("Test log ESIEA : DEBUG");

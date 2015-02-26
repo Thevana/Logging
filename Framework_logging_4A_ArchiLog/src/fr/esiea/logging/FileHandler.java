@@ -15,13 +15,8 @@ public class FileHandler extends Handler {
 	
 	protected File logFile;
 	
-	public FileHandler(){
-		super();
-		logFile = new File("defaultFile.log");
-	}
-	
-	public FileHandler(String logFileAbsolutePath){
-		logFile = new File(logFileAbsolutePath);
+	public FileHandler(String logFileCanonicalPath){
+		logFile = new File(logFileCanonicalPath);
 	}
 	
 	@Override
