@@ -15,7 +15,7 @@ public class Test {
 	public static void main(String[] args) {
 		
 		/* Test Logger */
-		Logger logger = new Logger(Test.class);
+		Logger logger = LoggerFactory.getLogger(Test.class);
 		
 		/* Test Level */
 		logger.setLevel(Level.DEBUG);

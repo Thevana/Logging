@@ -5,6 +5,7 @@ package fr.esiea.logging;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Properties;
@@ -21,7 +22,7 @@ public class Logger {
 	private ArrayList<Handler> handlers;
 	private boolean codePriority = true;
 	
-	public Logger(Class<?> loggerName) {
+	public Logger(Class<?> loggerName) throws FileNotFoundException {
 		this.loggerName = loggerName;
 		handlers = new ArrayList<Handler>();
 		readProperties();
@@ -88,11 +89,16 @@ public class Logger {
 		}
 	}
 	
-	private void readProperties() {
+	private void readProperties() throws FileNotFoundException {
+		File propertiesFile = new File("logging.properties");
+		if(!propertiesFile.exists()) {
+			throw new FileNotFoundException("Le fichier de configuration 'logging.properties' est introuvable !\nLe Framework de logging ne peut pas continuer !");
+		}
+		
 		FileInputStream input = null;
 		Properties prop = new Properties();
 		try {
-			input = new FileInputStream(new File("logging.properties"));
+			input = new FileInputStream(propertiesFile);
 			// chargement du fichier properties
 			prop.load(input);
 			
